@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#$ -P bf528
+#$ -cwd
+#$ -pe omp 16
+
+source /etc/bashrc
+
+module load fastqc
+
+fastqc SRR1177978_1.fastq.gz  SRR1177978_2.fastq.gz SRR1177979_1.fastq.gz SRR1177979_2.fastq.gz SRR1177980_1.fastq.gz SRR1177980_2.fastq.gz SRR1178015_1.fastq.gz SRR1178015_2.fastq.gz SRR1178022_1.fastq.gz SRR1178022_2.fastq.gz SRR1178048_1.fastq.gz SRR1178048_2.fastq.gz SRR1177963_1.fastq.gz SRR1177963_2.fastq.gz SRR1177964_1.fastq.gz SRR1177964_2.fastq.gz SRR1177965_1.fastq.gz SRR1177965_2.fastq.gz --threads=16

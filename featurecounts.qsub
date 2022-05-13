@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#$ -P bf528
+#$ -cwd
+#$ -pe omp 16
+
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177963Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177964Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177965Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177978Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177979Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1177980Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1178015Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1178022Aligned.sortedByCoord.out.bam
+#qsub featurecounts.qsub /projectnb/bf528/students/minty/final/star_results/SRR1178048Aligned.sortedByCoord.out.bam
+
+source /etc/bashrc
+
+# load subread to use featureCounts
+module load subread
+
+# path to the GTF annotation file
+GTF=/project/bf528/project_3/reference/rn4_refGene_20180308.gtf
+
+# output filename uses input file basename
+OUT=$(basename $1 .sortedByCoord.out.bam).txt
+
+
+#generate the count file
+featureCounts -T 16 -a $GTF -o count_files/$OUT $1
